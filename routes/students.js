@@ -137,7 +137,7 @@ router.put('/:id', async (req, res) => {
 
     res.json({
       success: true,
-      message: 'Student updated successfully✅ (v2)',
+      message: 'Student updated successfully✅ (v3)',
       data: student
     });
   } catch (error) {
