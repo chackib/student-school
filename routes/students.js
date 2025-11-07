@@ -72,7 +72,7 @@ router.post('/', async (req, res) => {
     
     res.status(201).json({
       success: true,
-      message: 'Student created successfully',
+      message: 'Student created successfully ✅ (v2)',
       data: populatedStudent
     });
   } catch (error) {
