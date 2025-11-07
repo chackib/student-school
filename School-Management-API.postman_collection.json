@@ -1,0 +1,410 @@
+{
+  "info": {
+    "name": "School Management API",
+    "description": "Complete API collection for School Management System",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:3000",
+      "type": "string"
+    },
+    {
+      "key": "api_url",
+      "value": "{{base_url}}/api",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health & Info",
+      "item": [
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{api_url}}/health",
+              "host": ["{{api_url}}"],
+              "path": ["health"]
+            }
+          }
+        },
+        {
+          "name": "API Info",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/",
+              "host": ["{{base_url}}"],
+              "path": [""]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Schools",
+      "item": [
+        {
+          "name": "Get All Schools",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{api_url}}/schools",
+              "host": ["{{api_url}}"],
+              "path": ["schools"]
+            }
+          }
+        },
+        {
+          "name": "Create School",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Sunshine Elementary School\",\n  \"address\": \"123 Main Street, Sunnyville, CA 90210\",\n  \"phone\": \"555-0101\",\n  \"email\": \"info@sunshine-elementary.edu\",\n  \"establishedYear\": 1995,\n  \"principal\": \"Dr. Maria Rodriguez\"\n}"
+            },
+            "url": {
+              "raw": "{{api_url}}/schools",
+              "host": ["{{api_url}}"],
+              "path": ["schools"]
+            }
+          }
+        },
+        {
+          "name": "Get School by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{api_url}}/schools/:id",
+              "host": ["{{api_url}}"],
+              "path": ["schools", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "YOUR_SCHOOL_ID_HERE"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update School",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Updated School Name\",\n  \"principal\": \"New Principal Name\"\n}"
+            },
+            "url": {
+              "raw": "{{api_url}}/schools/:id",
+              "host": ["{{api_url}}"],
+              "path": ["schools", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "YOUR_SCHOOL_ID_HERE"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete School",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{api_url}}/schools/:id",
+              "host": ["{{api_url}}"],
+              "path": ["schools", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "YOUR_SCHOOL_ID_HERE"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Students in School",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{api_url}}/schools/:id/students",
+              "host": ["{{api_url}}"],
+              "path": ["schools", ":id", "students"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "YOUR_SCHOOL_ID_HERE"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Students",
+      "item": [
+        {
+          "name": "Get All Students",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{api_url}}/students",
+              "host": ["{{api_url}}"],
+              "path": ["students"]
+            }
+          }
+        },
+        {
+          "name": "Get Students by Grade",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{api_url}}/students?grade=10th",
+              "host": ["{{api_url}}"],
+              "path": ["students"],
+              "query": [
+                {
+                  "key": "grade",
+                  "value": "10th"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Active Students",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{api_url}}/students?isActive=true",
+              "host": ["{{api_url}}"],
+              "path": ["students"],
+              "query": [
+                {
+                  "key": "isActive",
+                  "value": "true"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create Student",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"Emma\",\n  \"lastName\": \"Thompson\",\n  \"email\": \"emma.thompson@email.com\",\n  \"phone\": \"555-1001\",\n  \"dateOfBirth\": \"2015-08-15\",\n  \"grade\": \"3rd\",\n  \"address\": {\n    \"street\": \"100 Maple Drive\",\n    \"city\": \"Sunnyville\",\n    \"state\": \"CA\",\n    \"zipCode\": \"90210\"\n  },\n  \"parentInfo\": {\n    \"parentName\": \"Robert Thompson\",\n    \"parentPhone\": \"(555) 200-1001\",\n    \"parentEmail\": \"robert.thompson@email.com\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{api_url}}/students",
+              "host": ["{{api_url}}"],
+              "path": ["students"]
+            }
+          }
+        },
+        {
+          "name": "Get Student by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{api_url}}/students/:id",
+              "host": ["{{api_url}}"],
+              "path": ["students", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "YOUR_STUDENT_ID_HERE"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update Student",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"grade\": \"11th\",\n  \"phone\": \"555-0456-UPDATED\"\n}"
+            },
+            "url": {
+              "raw": "{{api_url}}/students/:id",
+              "host": ["{{api_url}}"],
+              "path": ["students", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "YOUR_STUDENT_ID_HERE"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete Student",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{api_url}}/students/:id",
+              "host": ["{{api_url}}"],
+              "path": ["students", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "YOUR_STUDENT_ID_HERE"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Enroll Student in School",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"schoolId\": \"YOUR_SCHOOL_ID_HERE\"\n}"
+            },
+            "url": {
+              "raw": "{{api_url}}/students/:id/enroll",
+              "host": ["{{api_url}}"],
+              "path": ["students", ":id", "enroll"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "YOUR_STUDENT_ID_HERE"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Unenroll Student from School",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "{{api_url}}/students/:id/unenroll",
+              "host": ["{{api_url}}"],
+              "path": ["students", ":id", "unenroll"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "YOUR_STUDENT_ID_HERE"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Error Testing",
+      "item": [
+        {
+          "name": "Test Validation Error - Missing Fields",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Test School\"\n}"
+            },
+            "url": {
+              "raw": "{{api_url}}/schools",
+              "host": ["{{api_url}}"],
+              "path": ["schools"]
+            }
+          }
+        },
+        {
+          "name": "Test Invalid Email",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"Test\",\n  \"lastName\": \"Student\",\n  \"email\": \"invalid-email\",\n  \"dateOfBirth\": \"2010-01-01\",\n  \"grade\": \"5th\"\n}"
+            },
+            "url": {
+              "raw": "{{api_url}}/students",
+              "host": ["{{api_url}}"],
+              "path": ["students"]
+            }
+          }
+        },
+        {
+          "name": "Test Not Found - Invalid ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{api_url}}/schools/507f1f77bcf86cd799439011",
+              "host": ["{{api_url}}"],
+              "path": ["schools", "507f1f77bcf86cd799439011"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
