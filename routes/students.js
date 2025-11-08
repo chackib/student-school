@@ -72,7 +72,7 @@ router.post('/', async (req, res) => {
     
     res.status(201).json({
       success: true,
-      message: 'Student created successfully (v3)',
+      message: 'Student created successfully ✅ (v2)',
       data: populatedStudent
     });
   } catch (error) {
@@ -80,7 +80,7 @@ router.post('/', async (req, res) => {
       const errors = Object.values(error.errors).map(err => err.message);
       return res.status(400).json({
         success: false,
-        message: 'Validation error A was not created',
+        message: 'Validation error',
         errors: errors
       });
     }
@@ -137,7 +137,7 @@ router.put('/:id', async (req, res) => {
 
     res.json({
       success: true,
-      message: 'Student updated successfully (v3)',
+      message: 'Student updated successfully✅ (v3)',
       data: student
     });
   } catch (error) {
