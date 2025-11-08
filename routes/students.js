@@ -72,7 +72,7 @@ router.post('/', async (req, res) => {
     
     res.status(201).json({
       success: true,
-      message: 'Student created successfully ✅ (v5)',
+      message: 'Student created successfully  (v6)',
       data: populatedStudent
     });
   } catch (error) {
@@ -137,7 +137,7 @@ router.put('/:id', async (req, res) => {
 
     res.json({
       success: true,
-      message: 'Student updated successfully✅ (v5)',
+      message: 'Student updated successfully✅ (v6)',
       data: student
     });
   } catch (error) {
